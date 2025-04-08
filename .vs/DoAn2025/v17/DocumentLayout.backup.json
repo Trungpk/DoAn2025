@@ -1,52 +1,7 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\sdt08\\source\\repos\\DoAn2025\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{E442D38B-FCE5-4562-ACDC-FCA3DC5ACA94}|DoAn2025\\DoAn2025.csproj|c:\\users\\sdt08\\source\\repos\\doan2025\\doan2025\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E442D38B-FCE5-4562-ACDC-FCA3DC5ACA94}|DoAn2025\\DoAn2025.csproj|solutionrelative:doan2025\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E442D38B-FCE5-4562-ACDC-FCA3DC5ACA94}|DoAn2025\\DoAn2025.csproj|c:\\users\\sdt08\\source\\repos\\doan2025\\doan2025\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{E442D38B-FCE5-4562-ACDC-FCA3DC5ACA94}|DoAn2025\\DoAn2025.csproj|solutionrelative:doan2025\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E442D38B-FCE5-4562-ACDC-FCA3DC5ACA94}|DoAn2025\\DoAn2025.csproj|c:\\users\\sdt08\\source\\repos\\doan2025\\doan2025\\models\\usermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E442D38B-FCE5-4562-ACDC-FCA3DC5ACA94}|DoAn2025\\DoAn2025.csproj|solutionrelative:doan2025\\models\\usermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E442D38B-FCE5-4562-ACDC-FCA3DC5ACA94}|DoAn2025\\DoAn2025.csproj|c:\\users\\sdt08\\source\\repos\\doan2025\\doan2025\\models\\productmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E442D38B-FCE5-4562-ACDC-FCA3DC5ACA94}|DoAn2025\\DoAn2025.csproj|solutionrelative:doan2025\\models\\productmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E442D38B-FCE5-4562-ACDC-FCA3DC5ACA94}|DoAn2025\\DoAn2025.csproj|c:\\users\\sdt08\\source\\repos\\doan2025\\doan2025\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E442D38B-FCE5-4562-ACDC-FCA3DC5ACA94}|DoAn2025\\DoAn2025.csproj|solutionrelative:doan2025\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E442D38B-FCE5-4562-ACDC-FCA3DC5ACA94}|DoAn2025\\DoAn2025.csproj|c:\\users\\sdt08\\source\\repos\\doan2025\\doan2025\\models\\categorymodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E442D38B-FCE5-4562-ACDC-FCA3DC5ACA94}|DoAn2025\\DoAn2025.csproj|solutionrelative:doan2025\\models\\categorymodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E442D38B-FCE5-4562-ACDC-FCA3DC5ACA94}|DoAn2025\\DoAn2025.csproj|c:\\users\\sdt08\\source\\repos\\doan2025\\doan2025\\models\\cartitemmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E442D38B-FCE5-4562-ACDC-FCA3DC5ACA94}|DoAn2025\\DoAn2025.csproj|solutionrelative:doan2025\\models\\cartitemmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E442D38B-FCE5-4562-ACDC-FCA3DC5ACA94}|DoAn2025\\DoAn2025.csproj|c:\\users\\sdt08\\source\\repos\\doan2025\\doan2025\\models\\brandmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E442D38B-FCE5-4562-ACDC-FCA3DC5ACA94}|DoAn2025\\DoAn2025.csproj|solutionrelative:doan2025\\models\\brandmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E442D38B-FCE5-4562-ACDC-FCA3DC5ACA94}|DoAn2025\\DoAn2025.csproj|c:\\users\\sdt08\\source\\repos\\doan2025\\doan2025\\models\\appusermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E442D38B-FCE5-4562-ACDC-FCA3DC5ACA94}|DoAn2025\\DoAn2025.csproj|solutionrelative:doan2025\\models\\appusermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E442D38B-FCE5-4562-ACDC-FCA3DC5ACA94}|DoAn2025\\DoAn2025.csproj|c:\\users\\sdt08\\source\\repos\\doan2025\\doan2025\\models\\viewmodels\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E442D38B-FCE5-4562-ACDC-FCA3DC5ACA94}|DoAn2025\\DoAn2025.csproj|solutionrelative:doan2025\\models\\viewmodels\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E442D38B-FCE5-4562-ACDC-FCA3DC5ACA94}|DoAn2025\\DoAn2025.csproj|c:\\users\\sdt08\\source\\repos\\doan2025\\doan2025\\models\\viewmodels\\cartitemviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E442D38B-FCE5-4562-ACDC-FCA3DC5ACA94}|DoAn2025\\DoAn2025.csproj|solutionrelative:doan2025\\models\\viewmodels\\cartitemviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "WorkspaceRootPath": "C:\\Users\\Tunen\\source\\repos\\DoAn2025\\",
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -54,7 +9,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -75,140 +30,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\sdt08\\source\\repos\\DoAn2025\\DoAn2025\\Program.cs",
-              "RelativeDocumentMoniker": "DoAn2025\\Program.cs",
-              "ToolTip": "C:\\Users\\sdt08\\source\\repos\\DoAn2025\\DoAn2025\\Program.cs*",
-              "RelativeToolTip": "DoAn2025\\Program.cs*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-08T09:47:15.033Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\sdt08\\source\\repos\\DoAn2025\\DoAn2025\\appsettings.json",
-              "RelativeDocumentMoniker": "DoAn2025\\appsettings.json",
-              "ToolTip": "C:\\Users\\sdt08\\source\\repos\\DoAn2025\\DoAn2025\\appsettings.json",
-              "RelativeToolTip": "DoAn2025\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-04-08T09:38:58.108Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "UserModel.cs",
-              "DocumentMoniker": "C:\\Users\\sdt08\\source\\repos\\DoAn2025\\DoAn2025\\Models\\UserModel.cs",
-              "RelativeDocumentMoniker": "DoAn2025\\Models\\UserModel.cs",
-              "ToolTip": "C:\\Users\\sdt08\\source\\repos\\DoAn2025\\DoAn2025\\Models\\UserModel.cs",
-              "RelativeToolTip": "DoAn2025\\Models\\UserModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-08T09:38:51.646Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ProductModel.cs",
-              "DocumentMoniker": "C:\\Users\\sdt08\\source\\repos\\DoAn2025\\DoAn2025\\Models\\ProductModel.cs",
-              "RelativeDocumentMoniker": "DoAn2025\\Models\\ProductModel.cs",
-              "ToolTip": "C:\\Users\\sdt08\\source\\repos\\DoAn2025\\DoAn2025\\Models\\ProductModel.cs",
-              "RelativeToolTip": "DoAn2025\\Models\\ProductModel.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAgwB4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-08T09:38:07.455Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ErrorViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\sdt08\\source\\repos\\DoAn2025\\DoAn2025\\Models\\ErrorViewModel.cs",
-              "RelativeDocumentMoniker": "DoAn2025\\Models\\ErrorViewModel.cs",
-              "ToolTip": "C:\\Users\\sdt08\\source\\repos\\DoAn2025\\DoAn2025\\Models\\ErrorViewModel.cs",
-              "RelativeToolTip": "DoAn2025\\Models\\ErrorViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-08T09:38:03.602Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "CategoryModel.cs",
-              "DocumentMoniker": "C:\\Users\\sdt08\\source\\repos\\DoAn2025\\DoAn2025\\Models\\CategoryModel.cs",
-              "RelativeDocumentMoniker": "DoAn2025\\Models\\CategoryModel.cs",
-              "ToolTip": "C:\\Users\\sdt08\\source\\repos\\DoAn2025\\DoAn2025\\Models\\CategoryModel.cs",
-              "RelativeToolTip": "DoAn2025\\Models\\CategoryModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-08T09:38:00.383Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "CartitemModel.cs",
-              "DocumentMoniker": "C:\\Users\\sdt08\\source\\repos\\DoAn2025\\DoAn2025\\Models\\CartitemModel.cs",
-              "RelativeDocumentMoniker": "DoAn2025\\Models\\CartitemModel.cs",
-              "ToolTip": "C:\\Users\\sdt08\\source\\repos\\DoAn2025\\DoAn2025\\Models\\CartitemModel.cs",
-              "RelativeToolTip": "DoAn2025\\Models\\CartitemModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-08T09:37:54.305Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "BrandModel.cs",
-              "DocumentMoniker": "C:\\Users\\sdt08\\source\\repos\\DoAn2025\\DoAn2025\\Models\\BrandModel.cs",
-              "RelativeDocumentMoniker": "DoAn2025\\Models\\BrandModel.cs",
-              "ToolTip": "C:\\Users\\sdt08\\source\\repos\\DoAn2025\\DoAn2025\\Models\\BrandModel.cs",
-              "RelativeToolTip": "DoAn2025\\Models\\BrandModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-08T09:37:49.792Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "AppUserModel.cs",
-              "DocumentMoniker": "C:\\Users\\sdt08\\source\\repos\\DoAn2025\\DoAn2025\\Models\\AppUserModel.cs",
-              "RelativeDocumentMoniker": "DoAn2025\\Models\\AppUserModel.cs",
-              "ToolTip": "C:\\Users\\sdt08\\source\\repos\\DoAn2025\\DoAn2025\\Models\\AppUserModel.cs",
-              "RelativeToolTip": "DoAn2025\\Models\\AppUserModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-08T09:37:45.361Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "LoginViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\sdt08\\source\\repos\\DoAn2025\\DoAn2025\\Models\\ViewModels\\LoginViewModel.cs",
-              "RelativeDocumentMoniker": "DoAn2025\\Models\\ViewModels\\LoginViewModel.cs",
-              "ToolTip": "C:\\Users\\sdt08\\source\\repos\\DoAn2025\\DoAn2025\\Models\\ViewModels\\LoginViewModel.cs",
-              "RelativeToolTip": "DoAn2025\\Models\\ViewModels\\LoginViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-08T09:37:36.635Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "CartItemViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\sdt08\\source\\repos\\DoAn2025\\DoAn2025\\Models\\ViewModels\\CartItemViewModel.cs",
-              "RelativeDocumentMoniker": "DoAn2025\\Models\\ViewModels\\CartItemViewModel.cs",
-              "ToolTip": "C:\\Users\\sdt08\\source\\repos\\DoAn2025\\DoAn2025\\Models\\ViewModels\\CartItemViewModel.cs",
-              "RelativeToolTip": "DoAn2025\\Models\\ViewModels\\CartItemViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-08T09:37:32.992Z"
             }
           ]
         }
