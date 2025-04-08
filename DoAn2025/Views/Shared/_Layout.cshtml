@@ -1,49 +1,437 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - DoAn2025</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/DoAn2025.styles.css" asp-append-version="true" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | CuCu</title>
+    <link href="~/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <link href="~/css/responsive.css" rel="stylesheet">
+    <style>
+        body {
+            background: #f5f5f5;
+            color: #333;
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            height: 100%;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background: #ffffff;
+            border-bottom: 2px solid #28a745; /* Đổi màu viền sang xanh lá cho CuCu */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+        }
+
+            .navbar a {
+                color: #28a745; /* Đổi màu liên kết sang xanh lá */
+                font-weight: 500;
+                transition: color 0.3s ease;
+            }
+
+                .navbar a:hover {
+                    color: #218838; /* Màu hover đậm hơn */
+                }
+
+        .mainmenu img {
+            max-width: 150px;
+            height: auto;
+        }
+
+        /* Button Styles */
+        .btn {
+            background: linear-gradient(45deg, #28a745, #fd7e14); /* Gradient xanh lá - cam cho CuCu */
+            color: #ffffff;
+            border: none;
+            padding: 12px 25px;
+            font-size: 14px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.4);
+            transition: all 0.3s ease;
+        }
+
+            .btn:hover {
+                background: linear-gradient(45deg, #218838, #e06b00);
+                box-shadow: 0 6px 20px rgba(40, 167, 69, 0.6);
+                transform: translateY(-2px);
+            }
+
+        /* Slider Styles */
+        #slider-carousel img {
+            object-fit: cover;
+            height: 400px;
+            width: 100%;
+        }
+
+        /* Product Grid Styles */
+        .features_items {
+            padding: 20px 0;
+        }
+
+            .features_items h2.title {
+                font-family: 'Poppins', sans-serif;
+                font-weight: 600;
+                color: #28a745; /* Đổi màu tiêu đề sang xanh lá */
+                margin-bottom: 30px;
+            }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .product-image-wrapper {
+            background: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 450px;
+        }
+
+        .single-products {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .productinfo {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+            .productinfo img {
+                width: 100%;
+                height: 200px;
+                object-fit: contain;
+                margin-bottom: 10px;
+            }
+
+            .productinfo h2 {
+                font-size: 18px;
+                font-weight: 600;
+                color: #28a745; /* Đổi màu tiêu đề sản phẩm */
+                margin: 10px 0;
+            }
+
+            .productinfo p {
+                font-size: 14px;
+                color: #555;
+                margin: 5px 0;
+                height: 20px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+
+            .productinfo a.btn {
+                margin-top: 10px;
+                padding: 8px 15px;
+                font-size: 14px;
+            }
+
+        .choose {
+            margin-top: 10px;
+        }
+
+            .choose ul.nav {
+                display: flex;
+                justify-content: center;
+                gap: 10px;
+            }
+
+                .choose ul.nav li a {
+                    color: #555;
+                    font-size: 14px;
+                    padding: 5px 10px;
+                    transition: color 0.3s ease;
+                }
+
+                    .choose ul.nav li a:hover {
+                        color: #28a745; /* Đổi màu hover */
+                    }
+
+
+        /* Footer Styles */
+        #footer {
+            background: #ffffff;
+            color: #555;
+            padding: 40px 0;
+            border-top: 3px solid #28a745; /* Đổi màu viền footer */
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+        }
+
+        .footer-widget {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            padding: 20px 0;
+            max-width: 1200px;
+            margin: 10px auto;
+        }
+
+        .footer-top, .footer-bottom {
+            background: #ffffff;
+            padding: 15px 0;
+            text-align: center;
+            max-width: 1200px;
+            margin: 10px auto;
+        }
+
+        .widget-column {
+            flex: 1;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .single-widget h2 {
+            color: #28a745; /* Đổi màu tiêu đề footer */
+            font-size: 20px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            border-bottom: 2px solid #28a745;
+            display: inline-block;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .nav-pills > li > a {
+            color: #555;
+            transition: 0.3s;
+        }
+
+            .nav-pills > li > a:hover {
+                color: #28a745; /* Đổi màu hover */
+            }
+
+        .contact-info {
+            font-size: 14px;
+            color: #555;
+        }
+
+            .contact-info i {
+                color: #28a745; /* Đổi màu icon */
+                margin-right: 5px;
+            }
+
+        .footer-bottom {
+            font-size: 14px;
+            border-top: 1px solid #ddd;
+        }
+
+            .footer-bottom a {
+                color: #28a745; /* Đổi màu liên kết */
+                font-weight: 500;
+            }
+
+                .footer-bottom a:hover {
+                    color: #218838; /* Màu hover đậm hơn */
+                }
+
+        /* Wrapper for Footer Positioning */
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+
+        .wrapper {
+            min-height: 100%;
+            position: relative;
+            padding-bottom: 150px;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">DoAn2025</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
+    <header id="header">
+        <div class="header_top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="contactinfo">
+                            <ul class="nav nav-pills">
+                                <li><a href="#"><i class="fa fa-phone"></i> 0867640635</a></li>
+                                <li><a href="#"><i class="fa fa-envelope"></i> AnhTrung@gmail.com</a></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </nav>
+        </div>
+
+        <div class="header-middle">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="btn-group pull-right"></div>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="shop-menu pull-right">
+                            <ul class="nav navbar-nav">
+                                <li><a asp-action="Index" asp-controller="Cart"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+                                @if (User.Identity?.IsAuthenticated ?? false)
+                                {
+                                    <li><a asp-controller="Account" asp-action="Logout"><i class="fa fa-lock"></i>Hi, @User.Identity.Name, Logout</a></li>
+                                    <li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
+                                    <li><a asp-controller="Category" asp-action="Index" asp-area="Admin"><i class="fa fa-lock"></i>Admin CMS</a></li>
+                                    <li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
+                                }
+                                else
+                                {
+                                    <li><a asp-controller="Account" asp-action="Login"><i class="fa fa-lock"></i> Login</a></li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="header-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        <div class="mainmenu pull-left">
+                            <ul class="nav navbar-nav collapse navbar-collapse">
+                                <li>
+                                    <a asp-controller="Home" class="active">
+                                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPAjOxwLNNBZhVTM1JiddLPCNBSVSfhgNITA&s" alt="CuCu Logo" style="max-width: 80px; height: 80px;" />
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <form asp-controller="Product" asp-action="Search" method="post">
+                            <div class="search_box pull-right" style="display: flex; align-items: center; gap: 5px;">
+                                <input type="text" placeholder="Search" name="searchTerm" class="form-control" style="width: 60%;" />
+                                <button class="btn btn-sm" type="submit">Search</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+
+    <section id="slider">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div id="slider-carousel" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#slider-carousel" data-slide-to="0" class="active"></li>
+                            <li data-target="#slider-carousel" data-slide-to="1"></li>
+                            <li data-target="#slider-carousel" data-slide-to="2"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                            <div class="item active">
+                                <div class="col-sm-12">
+                                    <img src="https://images.vexels.com/media/users/3/194701/raw/aa72abca784117244de372b5e9926988-online-shopping-slider-template.jpg" alt="Slider 1" />
+                                </div>
+                            </div>
+                            <div class="item">
+                                <img src="https://zshop.vn/blogs/wp-content/uploads/2017/09/mon-do-cong-nghe.png" alt="Slider 2" />
+                            </div>
+                            <div class="item">
+                                <img src="https://www.ngostore.net/wp-content/uploads/2018/11/slider-NGO-store-01.jpg" alt="Slider 3" />
+                            </div>
+                        </div>
+                        <a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
+                            <i class="fa fa-angle-left"></i>
+                        </a>
+                        <a href="#slider-carousel" class="right control-carousel hidden-xs" data-slide="next">
+                            <i class="fa fa-angle-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="row">
+                @Html.Partial("_NotificationPartial")
+                @RenderBody()
+            </div>
+        </div>
+    </section>
+
+    <div class="wrapper">
+        <footer id="footer">
+            <div class="footer-container">
+                <div class="footer-top">
+                    <div class="companyinfo">
+                        <h2><span>Cu</span>Cu</h2> <!-- Đổi tên footer thành CuCu -->
+                        <p>Fast - Unique - Friendly</p> <!-- Cập nhật slogan mới -->
+                    </div>
+                </div>
+                <div class="footer-widget">
+                    <div class="widget-column">
+                        <div class="single-widget">
+                            <h2>Services</h2>
+                            <ul>
+                                <li><a href="#">Online Support</a></li>
+                                <li><a href="#">Contact</a></li>
+                                <li><a href="#">Order Status</a></li>
+                                <li><a href="#">Change Location</a></li>
+                                <li><a href="#">FAQ</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="widget-column">
+                        <div class="single-widget">
+                            <h2>Information</h2>
+                            <ul>
+                                <li><a href="#">About Us</a></li>
+                                <li><a href="#">Privacy Policy</a></li>
+                                <li><a href="#">Terms of Service</a></li>
+                                <li><a href="#">Careers</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="widget-column">
+                        <div class="single-widget">
+                            <h2>Contact</h2>
+                            <p class="contact-info"><i class="fa fa-map-marker-alt"></i> Thanh Hải Thanh Hà Hải Dương </p>
+                            <p class="contact-info"><i class="fa fa-phone"></i> 0867640635 </p>
+                            <p class="contact-info"><i class="fa fa-envelope"></i> support@cucu.com</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>© 2025 CuCu. All Rights Reserved.</p> <!-- Đổi tên bản quyền -->
+                    <p>Designed by <a href="http://www.themeum.com">Themeum</a></p>
+                </div>
+            </div>
+        </footer>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2025 - DoAn2025 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+ 
 </body>
 </html>
