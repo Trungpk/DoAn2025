@@ -1,0 +1,241 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"] | CuCu</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #3498db, #8e44ad);
+            overflows: hidden;
+        }
+
+        .container {
+            display: flex;
+            width: 90%;
+            max-width: 900px;
+            height: 600px;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+            .container:hover {
+                transform: scale(1.02);
+            }
+
+        .left-section {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .left-section video {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .left-section .overlay {
+                position: absolute;
+                inset: 0;
+                background: rgba(0, 0, 0, 0.5);
+                transition: background 0.3s ease;
+            }
+
+            .left-section:hover .overlay {
+                background: rgba(0, 0, 0, 0.3);
+            }
+
+            .left-section .text {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                color: #fff;
+                text-align: center;
+                z-index: 1;
+            }
+
+            .left-section h1 {
+                font: 700 2.5rem 'Poppins', sans-serif;
+                margin-bottom: 12px;
+                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            }
+
+            .left-section p {
+                font-size: 1.1rem;
+                opacity: 0.95;
+                max-width: 80%;
+            }
+
+        .right-section {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f9fafb;
+            padding: 20px;
+            position: relative;
+        }
+
+        .card {
+            max-width: 360px;
+            width: 100%;
+            background: #fff;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        h2 {
+            font: 700 1.8rem 'Poppins', sans-serif;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-label {
+            font-weight: 500;
+            color: #444;
+            font-size: 14px;
+            margin-bottom: 6px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+            .form-control:focus {
+                border-color: #3498db;
+                box-shadow: 0 0 10px rgba(52, 152, 219, 0.2);
+                outline: none;
+            }
+
+        .btn-primary {
+            width: 100%;
+            padding: 12px;
+            font-size: 14px;
+            background: #3498db;
+            border: none;
+            border-radius: 10px;
+            color: #fff;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+            .btn-primary:hover {
+                background: #2980b9;
+                transform: translateY(-2px);
+                box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+            }
+
+        .text-danger {
+            font-size: 12px;
+            margin-top: 5px;
+            color: #e74c3c;
+        }
+
+        .text-muted {
+            color: #95a5a6 !important;
+            font-size: 12px;
+            text-align: center;
+        }
+
+        .social-login {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+            .social-login button {
+                width: 40px;
+                height: 40px;
+                background: #ecf0f1;
+                border: none;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.3s ease;
+            }
+
+                .social-login button:hover {
+                    background: #3498db;
+                    color: #fff;
+                    transform: scale(1.1);
+                }
+
+        .travel-icons {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+            .travel-icons i {
+                font-size: 1.4rem;
+                color: #3498db;
+                transition: transform 0.3s ease;
+            }
+
+                .travel-icons i:hover {
+                    transform: translateY(-5px);
+                    color: #2980b9;
+                }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-section">
+            <video autoplay muted loop playsinline>
+                <source src="~/videos/tech-shopping.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="overlay"></div>
+            <div class="text">
+                <h1>Welcome to CuCu</h1>
+
+            </div>
+        </div>
+        <div class="right-section">
+            @RenderBody() <!-- Nơi nội dung view con sẽ được render -->
+            <div class="travel-icons">
+                <i class="fas fa-plane"></i>
+                <i class="fas fa-map-marker-alt"></i>
+                <i class="fas fa-camera"></i>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/jquery.js"></script>
+    <script src="/js/jquery.validate.js"></script>
+    <script src="/js/jquery.validate.unobtrusive.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
