@@ -1,33 +1,57 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Tunen\\source\\repos\\DoAn2025\\",
+  "WorkspaceRootPath": "C:\\Users\\FPTSHOP\\source\\repos\\DoAn2025\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E442D38B-FCE5-4562-ACDC-FCA3DC5ACA94}|DoAn2025\\DoAn2025.csproj|c:\\users\\tunen\\source\\repos\\doan2025\\doan2025\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{E442D38B-FCE5-4562-ACDC-FCA3DC5ACA94}|DoAn2025\\DoAn2025.csproj|solutionrelative:doan2025\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{E442D38B-FCE5-4562-ACDC-FCA3DC5ACA94}|DoAn2025\\DoAn2025.csproj|c:\\users\\fptshop\\source\\repos\\doan2025\\doan2025\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E442D38B-FCE5-4562-ACDC-FCA3DC5ACA94}|DoAn2025\\DoAn2025.csproj|solutionrelative:doan2025\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E442D38B-FCE5-4562-ACDC-FCA3DC5ACA94}|DoAn2025\\DoAn2025.csproj|c:\\users\\tunen\\source\\repos\\doan2025\\doan2025\\models\\viewmodels\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E442D38B-FCE5-4562-ACDC-FCA3DC5ACA94}|DoAn2025\\DoAn2025.csproj|solutionrelative:doan2025\\models\\viewmodels\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E442D38B-FCE5-4562-ACDC-FCA3DC5ACA94}|DoAn2025\\DoAn2025.csproj|c:\\users\\fptshop\\source\\repos\\doan2025\\doan2025\\doan2025context.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E442D38B-FCE5-4562-ACDC-FCA3DC5ACA94}|DoAn2025\\DoAn2025.csproj|solutionrelative:doan2025\\doan2025context.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E442D38B-FCE5-4562-ACDC-FCA3DC5ACA94}|DoAn2025\\DoAn2025.csproj|c:\\users\\tunen\\source\\repos\\doan2025\\doan2025\\views\\shared\\_loginlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{E442D38B-FCE5-4562-ACDC-FCA3DC5ACA94}|DoAn2025\\DoAn2025.csproj|solutionrelative:doan2025\\views\\shared\\_loginlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E442D38B-FCE5-4562-ACDC-FCA3DC5ACA94}|DoAn2025\\DoAn2025.csproj|c:\\users\\tunen\\source\\repos\\doan2025\\doan2025\\views\\account\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{E442D38B-FCE5-4562-ACDC-FCA3DC5ACA94}|DoAn2025\\DoAn2025.csproj|solutionrelative:doan2025\\views\\account\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E442D38B-FCE5-4562-ACDC-FCA3DC5ACA94}|DoAn2025\\DoAn2025.csproj|c:\\users\\tunen\\source\\repos\\doan2025\\doan2025\\views\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{E442D38B-FCE5-4562-ACDC-FCA3DC5ACA94}|DoAn2025\\DoAn2025.csproj|solutionrelative:doan2025\\views\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E442D38B-FCE5-4562-ACDC-FCA3DC5ACA94}|DoAn2025\\DoAn2025.csproj|c:\\users\\tunen\\source\\repos\\doan2025\\doan2025\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{E442D38B-FCE5-4562-ACDC-FCA3DC5ACA94}|DoAn2025\\DoAn2025.csproj|c:\\users\\fptshop\\source\\repos\\doan2025\\doan2025\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{E442D38B-FCE5-4562-ACDC-FCA3DC5ACA94}|DoAn2025\\DoAn2025.csproj|solutionrelative:doan2025\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E442D38B-FCE5-4562-ACDC-FCA3DC5ACA94}|DoAn2025\\DoAn2025.csproj|c:\\users\\tunen\\source\\repos\\doan2025\\doan2025\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E442D38B-FCE5-4562-ACDC-FCA3DC5ACA94}|DoAn2025\\DoAn2025.csproj|c:\\users\\fptshop\\source\\repos\\doan2025\\doan2025\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E442D38B-FCE5-4562-ACDC-FCA3DC5ACA94}|DoAn2025\\DoAn2025.csproj|solutionrelative:doan2025\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E442D38B-FCE5-4562-ACDC-FCA3DC5ACA94}|DoAn2025\\DoAn2025.csproj|c:\\users\\fptshop\\source\\repos\\doan2025\\doan2025\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E442D38B-FCE5-4562-ACDC-FCA3DC5ACA94}|DoAn2025\\DoAn2025.csproj|solutionrelative:doan2025\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E442D38B-FCE5-4562-ACDC-FCA3DC5ACA94}|DoAn2025\\DoAn2025.csproj|c:\\users\\fptshop\\source\\repos\\doan2025\\doan2025\\models\\brandmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E442D38B-FCE5-4562-ACDC-FCA3DC5ACA94}|DoAn2025\\DoAn2025.csproj|solutionrelative:doan2025\\models\\brandmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E442D38B-FCE5-4562-ACDC-FCA3DC5ACA94}|DoAn2025\\DoAn2025.csproj|c:\\users\\fptshop\\source\\repos\\doan2025\\doan2025\\models\\cartitemmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E442D38B-FCE5-4562-ACDC-FCA3DC5ACA94}|DoAn2025\\DoAn2025.csproj|solutionrelative:doan2025\\models\\cartitemmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E442D38B-FCE5-4562-ACDC-FCA3DC5ACA94}|DoAn2025\\DoAn2025.csproj|c:\\users\\fptshop\\source\\repos\\doan2025\\doan2025\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E442D38B-FCE5-4562-ACDC-FCA3DC5ACA94}|DoAn2025\\DoAn2025.csproj|solutionrelative:doan2025\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E442D38B-FCE5-4562-ACDC-FCA3DC5ACA94}|DoAn2025\\DoAn2025.csproj|c:\\users\\fptshop\\source\\repos\\doan2025\\doan2025\\models\\viewmodels\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E442D38B-FCE5-4562-ACDC-FCA3DC5ACA94}|DoAn2025\\DoAn2025.csproj|solutionrelative:doan2025\\models\\viewmodels\\loginviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E442D38B-FCE5-4562-ACDC-FCA3DC5ACA94}|DoAn2025\\DoAn2025.csproj|c:\\users\\fptshop\\source\\repos\\doan2025\\doan2025\\views\\shared\\_loginlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E442D38B-FCE5-4562-ACDC-FCA3DC5ACA94}|DoAn2025\\DoAn2025.csproj|solutionrelative:doan2025\\views\\shared\\_loginlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E442D38B-FCE5-4562-ACDC-FCA3DC5ACA94}|DoAn2025\\DoAn2025.csproj|c:\\users\\fptshop\\source\\repos\\doan2025\\doan2025\\views\\account\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E442D38B-FCE5-4562-ACDC-FCA3DC5ACA94}|DoAn2025\\DoAn2025.csproj|solutionrelative:doan2025\\views\\account\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E442D38B-FCE5-4562-ACDC-FCA3DC5ACA94}|DoAn2025\\DoAn2025.csproj|c:\\users\\fptshop\\source\\repos\\doan2025\\doan2025\\views\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E442D38B-FCE5-4562-ACDC-FCA3DC5ACA94}|DoAn2025\\DoAn2025.csproj|solutionrelative:doan2025\\views\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E442D38B-FCE5-4562-ACDC-FCA3DC5ACA94}|DoAn2025\\DoAn2025.csproj|c:\\users\\fptshop\\source\\repos\\doan2025\\doan2025\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E442D38B-FCE5-4562-ACDC-FCA3DC5ACA94}|DoAn2025\\DoAn2025.csproj|solutionrelative:doan2025\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -38,8 +62,60 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DoAn2025Context.cs",
+              "DocumentMoniker": "C:\\Users\\FPTSHOP\\source\\repos\\DoAn2025\\DoAn2025\\DoAn2025Context.cs",
+              "RelativeDocumentMoniker": "DoAn2025\\DoAn2025Context.cs",
+              "ToolTip": "C:\\Users\\FPTSHOP\\source\\repos\\DoAn2025\\DoAn2025\\DoAn2025Context.cs",
+              "RelativeToolTip": "DoAn2025\\DoAn2025Context.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-08T13:58:21.933Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\FPTSHOP\\source\\repos\\DoAn2025\\DoAn2025\\Program.cs",
+              "RelativeDocumentMoniker": "DoAn2025\\Program.cs",
+              "ToolTip": "C:\\Users\\FPTSHOP\\source\\repos\\DoAn2025\\DoAn2025\\Program.cs",
+              "RelativeToolTip": "DoAn2025\\Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAxAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-08T13:58:20.639Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ProductController.cs",
+              "DocumentMoniker": "C:\\Users\\FPTSHOP\\source\\repos\\DoAn2025\\DoAn2025\\Controllers\\ProductController.cs",
+              "RelativeDocumentMoniker": "DoAn2025\\Controllers\\ProductController.cs",
+              "ToolTip": "C:\\Users\\FPTSHOP\\source\\repos\\DoAn2025\\DoAn2025\\Controllers\\ProductController.cs",
+              "RelativeToolTip": "DoAn2025\\Controllers\\ProductController.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAAwBQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-08T13:55:41.178Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CartController.cs",
+              "DocumentMoniker": "C:\\Users\\FPTSHOP\\source\\repos\\DoAn2025\\DoAn2025\\Controllers\\CartController.cs",
+              "RelativeDocumentMoniker": "DoAn2025\\Controllers\\CartController.cs",
+              "ToolTip": "C:\\Users\\FPTSHOP\\source\\repos\\DoAn2025\\DoAn2025\\Controllers\\CartController.cs",
+              "RelativeToolTip": "DoAn2025\\Controllers\\CartController.cs",
+              "ViewState": "AQIAAGsAAAAAAAAAAAAswHoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-08T13:54:39.135Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
@@ -62,94 +138,115 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "LoginViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\Tunen\\source\\repos\\DoAn2025\\DoAn2025\\Models\\ViewModels\\LoginViewModel.cs",
-              "RelativeDocumentMoniker": "DoAn2025\\Models\\ViewModels\\LoginViewModel.cs",
-              "ToolTip": "C:\\Users\\Tunen\\source\\repos\\DoAn2025\\DoAn2025\\Models\\ViewModels\\LoginViewModel.cs",
-              "RelativeToolTip": "DoAn2025\\Models\\ViewModels\\LoginViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAACAAAAAAAAAA==",
+              "DocumentIndex": 5,
+              "Title": "BrandModel.cs",
+              "DocumentMoniker": "C:\\Users\\FPTSHOP\\source\\repos\\DoAn2025\\DoAn2025\\Models\\BrandModel.cs",
+              "RelativeDocumentMoniker": "DoAn2025\\Models\\BrandModel.cs",
+              "ToolTip": "C:\\Users\\FPTSHOP\\source\\repos\\DoAn2025\\DoAn2025\\Models\\BrandModel.cs",
+              "RelativeToolTip": "DoAn2025\\Models\\BrandModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAhAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-08T11:18:06.676Z",
+              "WhenOpened": "2025-04-08T13:44:10.084Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
+              "Title": "CartitemModel.cs",
+              "DocumentMoniker": "C:\\Users\\FPTSHOP\\source\\repos\\DoAn2025\\DoAn2025\\Models\\CartitemModel.cs",
+              "RelativeDocumentMoniker": "DoAn2025\\Models\\CartitemModel.cs",
+              "ToolTip": "C:\\Users\\FPTSHOP\\source\\repos\\DoAn2025\\DoAn2025\\Models\\CartitemModel.cs",
+              "RelativeToolTip": "DoAn2025\\Models\\CartitemModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-08T13:43:56.097Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
               "Title": "_LoginLayout.cshtml",
-              "DocumentMoniker": "C:\\Users\\Tunen\\source\\repos\\DoAn2025\\DoAn2025\\Views\\Shared\\_LoginLayout.cshtml",
+              "DocumentMoniker": "C:\\Users\\FPTSHOP\\source\\repos\\DoAn2025\\DoAn2025\\Views\\Shared\\_LoginLayout.cshtml",
               "RelativeDocumentMoniker": "DoAn2025\\Views\\Shared\\_LoginLayout.cshtml",
-              "ToolTip": "C:\\Users\\Tunen\\source\\repos\\DoAn2025\\DoAn2025\\Views\\Shared\\_LoginLayout.cshtml",
+              "ToolTip": "C:\\Users\\FPTSHOP\\source\\repos\\DoAn2025\\DoAn2025\\Views\\Shared\\_LoginLayout.cshtml",
               "RelativeToolTip": "DoAn2025\\Views\\Shared\\_LoginLayout.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-08T11:17:13.228Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-08T11:17:13.228Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 7,
               "Title": "Login.cshtml",
-              "DocumentMoniker": "C:\\Users\\Tunen\\source\\repos\\DoAn2025\\DoAn2025\\Views\\Account\\Login.cshtml",
+              "DocumentMoniker": "C:\\Users\\FPTSHOP\\source\\repos\\DoAn2025\\DoAn2025\\Views\\Account\\Login.cshtml",
               "RelativeDocumentMoniker": "DoAn2025\\Views\\Account\\Login.cshtml",
-              "ToolTip": "C:\\Users\\Tunen\\source\\repos\\DoAn2025\\DoAn2025\\Views\\Account\\Login.cshtml",
+              "ToolTip": "C:\\Users\\FPTSHOP\\source\\repos\\DoAn2025\\DoAn2025\\Views\\Account\\Login.cshtml",
               "RelativeToolTip": "DoAn2025\\Views\\Account\\Login.cshtml",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAiwBkAAAAAAAAAAAAAAA==",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-04-08T11:15:48.035Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Create.cshtml",
-              "DocumentMoniker": "C:\\Users\\Tunen\\source\\repos\\DoAn2025\\DoAn2025\\Views\\Account\\Create.cshtml",
-              "RelativeDocumentMoniker": "DoAn2025\\Views\\Account\\Create.cshtml",
-              "ToolTip": "C:\\Users\\Tunen\\source\\repos\\DoAn2025\\DoAn2025\\Views\\Account\\Create.cshtml",
-              "RelativeToolTip": "DoAn2025\\Views\\Account\\Create.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-08T11:14:07.312Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "_ValidationScriptsPartial.cshtml",
-              "DocumentMoniker": "C:\\Users\\Tunen\\source\\repos\\DoAn2025\\DoAn2025\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
-              "RelativeDocumentMoniker": "DoAn2025\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
-              "ToolTip": "C:\\Users\\Tunen\\source\\repos\\DoAn2025\\DoAn2025\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
-              "RelativeToolTip": "DoAn2025\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-08T11:13:29.697Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
               "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\Tunen\\source\\repos\\DoAn2025\\DoAn2025\\Views\\Shared\\_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\FPTSHOP\\source\\repos\\DoAn2025\\DoAn2025\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "DoAn2025\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\Tunen\\source\\repos\\DoAn2025\\DoAn2025\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\FPTSHOP\\source\\repos\\DoAn2025\\DoAn2025\\Views\\Shared\\_Layout.cshtml",
               "RelativeToolTip": "DoAn2025\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAB3AAAAAAAAAA==",
+              "ViewState": "AQIAAIwAAAAAAAAAAAAIwJ8AAAAmAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-04-08T11:13:13.475Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
+              "Title": "LoginViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\FPTSHOP\\source\\repos\\DoAn2025\\DoAn2025\\Models\\ViewModels\\LoginViewModel.cs",
+              "RelativeDocumentMoniker": "DoAn2025\\Models\\ViewModels\\LoginViewModel.cs",
+              "ToolTip": "C:\\Users\\FPTSHOP\\source\\repos\\DoAn2025\\DoAn2025\\Models\\ViewModels\\LoginViewModel.cs",
+              "RelativeToolTip": "DoAn2025\\Models\\ViewModels\\LoginViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-08T11:18:06.676Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\FPTSHOP\\source\\repos\\DoAn2025\\DoAn2025\\Views\\Account\\Create.cshtml",
+              "RelativeDocumentMoniker": "DoAn2025\\Views\\Account\\Create.cshtml",
+              "ToolTip": "C:\\Users\\FPTSHOP\\source\\repos\\DoAn2025\\DoAn2025\\Views\\Account\\Create.cshtml",
+              "RelativeToolTip": "DoAn2025\\Views\\Account\\Create.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-08T11:14:07.312Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "_ValidationScriptsPartial.cshtml",
+              "DocumentMoniker": "C:\\Users\\FPTSHOP\\source\\repos\\DoAn2025\\DoAn2025\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "RelativeDocumentMoniker": "DoAn2025\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "ToolTip": "C:\\Users\\FPTSHOP\\source\\repos\\DoAn2025\\DoAn2025\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "RelativeToolTip": "DoAn2025\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-08T11:13:29.697Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
               "Title": "AccountController.cs",
-              "DocumentMoniker": "C:\\Users\\Tunen\\source\\repos\\DoAn2025\\DoAn2025\\Controllers\\AccountController.cs",
+              "DocumentMoniker": "C:\\Users\\FPTSHOP\\source\\repos\\DoAn2025\\DoAn2025\\Controllers\\AccountController.cs",
               "RelativeDocumentMoniker": "DoAn2025\\Controllers\\AccountController.cs",
-              "ToolTip": "C:\\Users\\Tunen\\source\\repos\\DoAn2025\\DoAn2025\\Controllers\\AccountController.cs",
+              "ToolTip": "C:\\Users\\FPTSHOP\\source\\repos\\DoAn2025\\DoAn2025\\Controllers\\AccountController.cs",
               "RelativeToolTip": "DoAn2025\\Controllers\\AccountController.cs",
               "ViewState": "AgIAACYAAAAAAAAAAAAwwEIAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-08T11:10:05.975Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-08T11:10:05.975Z"
             }
           ]
         }
