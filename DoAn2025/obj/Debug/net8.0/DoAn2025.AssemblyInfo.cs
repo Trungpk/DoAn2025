@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DoAn2025")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9c90da996c0dd5d3e5bc5c249e66914515d74d4e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9c6a49dd5a0acd2424d3bf7d22e1a95e5200da7d")]
 [assembly: System.Reflection.AssemblyProductAttribute("DoAn2025")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DoAn2025")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
