@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Web.Repository;
+using DoAn2025.Repository;
 
 #nullable disable
 
-namespace Web.Migrations
+namespace DoAn2025.Migrations
 {
     [DbContext(typeof(DataContext))]
     [Migration("20250314190813_Initial")]
