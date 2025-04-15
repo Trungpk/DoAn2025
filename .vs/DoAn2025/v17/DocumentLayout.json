@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\sdt08\\source\\repos\\DoAn2025\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{E442D38B-FCE5-4562-ACDC-FCA3DC5ACA94}|DoAn2025\\DoAn2025.csproj|c:\\users\\sdt08\\source\\repos\\doan2025\\doan2025\\controllers\\chatbotcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E442D38B-FCE5-4562-ACDC-FCA3DC5ACA94}|DoAn2025\\DoAn2025.csproj|solutionrelative:doan2025\\controllers\\chatbotcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{E442D38B-FCE5-4562-ACDC-FCA3DC5ACA94}|DoAn2025\\DoAn2025.csproj|c:\\users\\sdt08\\source\\repos\\doan2025\\doan2025\\areas\\admin\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E442D38B-FCE5-4562-ACDC-FCA3DC5ACA94}|DoAn2025\\DoAn2025.csproj|solutionrelative:doan2025\\areas\\admin\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -13,10 +17,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{E442D38B-FCE5-4562-ACDC-FCA3DC5ACA94}|DoAn2025\\DoAn2025.csproj|c:\\users\\sdt08\\source\\repos\\doan2025\\doan2025\\areas\\admin\\controllers\\brandcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E442D38B-FCE5-4562-ACDC-FCA3DC5ACA94}|DoAn2025\\DoAn2025.csproj|solutionrelative:doan2025\\areas\\admin\\controllers\\brandcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E442D38B-FCE5-4562-ACDC-FCA3DC5ACA94}|DoAn2025\\DoAn2025.csproj|c:\\users\\sdt08\\source\\repos\\doan2025\\doan2025\\controllers\\chatbotcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E442D38B-FCE5-4562-ACDC-FCA3DC5ACA94}|DoAn2025\\DoAn2025.csproj|solutionrelative:doan2025\\controllers\\chatbotcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E442D38B-FCE5-4562-ACDC-FCA3DC5ACA94}|DoAn2025\\DoAn2025.csproj|c:\\users\\sdt08\\source\\repos\\doan2025\\doan2025\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -46,7 +46,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 10,
           "Children": [
             {
               "$type": "Bookmark",
@@ -70,7 +70,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "ProductController.cs",
               "DocumentMoniker": "C:\\Users\\sdt08\\source\\repos\\DoAn2025\\DoAn2025\\Areas\\Admin\\Controllers\\ProductController.cs",
               "RelativeDocumentMoniker": "DoAn2025\\Areas\\Admin\\Controllers\\ProductController.cs",
@@ -78,25 +78,11 @@
               "RelativeToolTip": "DoAn2025\\Areas\\Admin\\Controllers\\ProductController.cs",
               "ViewState": "AgIAAGsAAAAAAAAAAAAswEAAAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-14T19:20:49.963Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-14T19:20:49.963Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "CategoryController.cs",
-              "DocumentMoniker": "C:\\Users\\sdt08\\source\\repos\\DoAn2025\\DoAn2025\\Areas\\Admin\\Controllers\\CategoryController.cs",
-              "RelativeDocumentMoniker": "DoAn2025\\Areas\\Admin\\Controllers\\CategoryController.cs",
-              "ToolTip": "C:\\Users\\sdt08\\source\\repos\\DoAn2025\\DoAn2025\\Areas\\Admin\\Controllers\\CategoryController.cs",
-              "RelativeToolTip": "DoAn2025\\Areas\\Admin\\Controllers\\CategoryController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-14T19:20:49.353Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "BrandController.cs",
               "DocumentMoniker": "C:\\Users\\sdt08\\source\\repos\\DoAn2025\\DoAn2025\\Areas\\Admin\\Controllers\\BrandController.cs",
               "RelativeDocumentMoniker": "DoAn2025\\Areas\\Admin\\Controllers\\BrandController.cs",
@@ -104,8 +90,7 @@
               "RelativeToolTip": "DoAn2025\\Areas\\Admin\\Controllers\\BrandController.cs",
               "ViewState": "AgIAAAsAAAAAAAAAAAAxwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-14T19:20:46.924Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-14T19:20:46.924Z"
             },
             {
               "$type": "Document",
@@ -117,8 +102,7 @@
               "RelativeToolTip": "DoAn2025\\Views\\Account\\Login.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-04-14T08:47:33.576Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-14T08:47:33.576Z"
             },
             {
               "$type": "Document",
@@ -146,6 +130,31 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ChatbotController.cs",
+              "DocumentMoniker": "C:\\Users\\sdt08\\source\\repos\\DoAn2025\\DoAn2025\\Controllers\\ChatbotController.cs",
+              "RelativeDocumentMoniker": "DoAn2025\\Controllers\\ChatbotController.cs",
+              "ToolTip": "C:\\Users\\sdt08\\source\\repos\\DoAn2025\\DoAn2025\\Controllers\\ChatbotController.cs",
+              "RelativeToolTip": "DoAn2025\\Controllers\\ChatbotController.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAAwAsAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-14T05:07:56.038Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CategoryController.cs",
+              "DocumentMoniker": "C:\\Users\\sdt08\\source\\repos\\DoAn2025\\DoAn2025\\Areas\\Admin\\Controllers\\CategoryController.cs",
+              "RelativeDocumentMoniker": "DoAn2025\\Areas\\Admin\\Controllers\\CategoryController.cs",
+              "ToolTip": "C:\\Users\\sdt08\\source\\repos\\DoAn2025\\DoAn2025\\Areas\\Admin\\Controllers\\CategoryController.cs",
+              "RelativeToolTip": "DoAn2025\\Areas\\Admin\\Controllers\\CategoryController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-14T19:20:49.353Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 7,
               "Title": "BrandController.cs",
               "DocumentMoniker": "C:\\Users\\sdt08\\source\\repos\\DoAn2025\\DoAn2025\\Controllers\\BrandController.cs",
@@ -155,19 +164,6 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-14T05:08:37.019Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ChatbotController.cs",
-              "DocumentMoniker": "C:\\Users\\sdt08\\source\\repos\\DoAn2025\\DoAn2025\\Controllers\\ChatbotController.cs",
-              "RelativeDocumentMoniker": "DoAn2025\\Controllers\\ChatbotController.cs",
-              "ToolTip": "C:\\Users\\sdt08\\source\\repos\\DoAn2025\\DoAn2025\\Controllers\\ChatbotController.cs",
-              "RelativeToolTip": "DoAn2025\\Controllers\\ChatbotController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAABGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-14T05:07:56.038Z",
-              "EditorCaption": ""
             },
             {
               "$type": "Document",
