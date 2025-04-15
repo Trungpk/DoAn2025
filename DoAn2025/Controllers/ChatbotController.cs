@@ -1,270 +1,362 @@
-﻿using System.Text.RegularExpressions;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
-using System.Net.Http;
+using System.Text;
+using System.Text.RegularExpressions;
 using DoAn2025.Models;
 using DoAn2025.Repository;
 
-namespace Web.Controllers
+namespace DoAn2025.Controllers
 {
 	public class ChatbotController : Controller
 	{
+	
 		private readonly DataContext _context;
 		private readonly IWebHostEnvironment _env;
-		private readonly HttpClient _client = new();
-		private readonly string _apiKey = ""; 
-		private readonly Dictionary<string, string> _responses = new()
-		{
-			{"vi_welcome", "Chào bạn! Mình là trợ lý siêu vui! 😊 Tìm gì nào?"},
-			{"en_welcome", "Hi! I'm your cheerful assistant! 😊 What's up?"},
-			{"vi_no_product", "Hơi tiếc! 😔 Chưa có sản phẩm phù hợp. Thử lại nhé?"},
-			{"en_no_product", "Tiny bummer! 😔 No products found. Try again?"},
-			{"vi_found", "Tìm thấy rồi! 😍 Xem nhé:\n"},
-			{"en_found", "Found it! 😍 Check these out:\n"},
-			{"vi_product_link", "Wao, sản phẩm đã có trong shop mình nè! Nhấp vào đây để mua nha 😜"},
-			{"en_product_link", "Wow, we’ve got this in our shop! Click here to grab it 😜"}
-		};
+
+		// Thông tin cửa hàng với phương thức thanh toán, trả góp, và bảo hành
+		private readonly (string Name, string Address, string Email, string Phone, string OpenHours, string CloseHours, string Description, string[] PaymentMethods, string InstallmentInfo, string WarrantyInfo) _shopInfo = (
+			Name: "CuCu Shop",
+			Address: "Thanh Hải Thanh Hà Hải Dương",
+			Email: "Trungdz@cucushop.vn",
+			Phone: "0867640635",
+			OpenHours: "08:00",
+			CloseHours: "20:00",
+			Description: "CuCu Shop - Nơi mang đến những sản phẩm công nghệ chất lượng cao với dịch vụ tận tâm!",
+			PaymentMethods: new[] { "Thanh toán tiền mặt (COD)", "Thẻ tín dụng/ghi nợ (Visa, MasterCard)", "Chuyển khoản ngân hàng", "Ví điện tử (Momo, ZaloPay)" },
+			InstallmentInfo: "Hỗ trợ trả góp 0% lãi suất cho đơn hàng từ 3 triệu đồng trở lên qua thẻ tín dụng (tùy ngân hàng).",
+			WarrantyInfo: "Bảo hành chính hãng 12 tháng cho tất cả sản phẩm, hỗ trợ đổi trả trong 30 ngày nếu có lỗi từ nhà sản xuất."
+		);
 
 		public ChatbotController(DataContext context, IWebHostEnvironment env)
 		{
 			_context = context;
 			_env = env;
-			_client.DefaultRequestHeaders.Add("Authorization", $"Bearer {_apiKey}");
 		}
 
 		[HttpPost]
-		public async Task<JsonResult> GetChatbotResponse(string message, string language = null)
+		public async Task<JsonResult> GetChatbotResponse(string message, string? language)
 		{
-			language = language ?? (message.Any(c => c >= 'À' && c <= 'ỹ') ? "vi" : "en");
-			var history = HttpContext.Session.GetString("ChatHistory") ?? "";
-			var (reply, productUrl) = await ProcessQuery(message.ToLower(), language, message);
-
-			history = (history.Length > 5000 ? history.Substring(history.Length - 4000) : history) +
-				$"<div><b>Bạn:</b> {message}</div><div><b>Bot:</b> {reply}</div>";
-			HttpContext.Session.SetString("ChatHistory", history);
-			return Json(new { reply, productUrl });
+			language ??= await DetectLanguage(message);
+			var chatHistory = HttpContext.Session.GetString("ChatHistory") ?? "";
+			var lowerMessage = message.ToLower();
+			var budget = ExtractBudgetFromMessage(lowerMessage);
+			var (minPrice, maxPrice) = ExtractPriceRangeFromMessage(lowerMessage);
+			var reply = await GenerateReply(lowerMessage, language, budget, minPrice, maxPrice);
+			chatHistory += $"<div><b>Bạn / You:</b> {message}</div><div><b>Bot:</b> {reply.text}</div>";
+			HttpContext.Session.SetString("ChatHistory", chatHistory);
+			return Json(new { reply = reply.text, productUrl = reply.productUrl });
 		}
 
 		[HttpGet]
-		public JsonResult GetChatHistory()
-		{
-			return Json(new { history = HttpContext.Session.GetString("ChatHistory") ?? "" });
-		}
+		public JsonResult GetChatHistory() =>
+			Json(new { history = HttpContext.Session.GetString("ChatHistory") ?? "" });
 
-		private async Task<(string Reply, string ProductUrl)> ProcessQuery(string lowerMessage, string language, string originalMessage)
+		private async Task<(string text, string? productUrl)> GenerateReply(string message, string language, decimal? budget, decimal? minPrice, decimal? maxPrice)
 		{
-			var budget = ExtractBudget(lowerMessage);
-			var (minPrice, maxPrice) = ExtractPriceRange(lowerMessage);
-			var products = new List<ProductModel>();
-			string reply, productUrl = null;
-
+			var isVietnamese = language == "vi";
 			if (string.IsNullOrEmpty(HttpContext.Session.GetString("ChatHistory")))
-			{
-				return (_responses[$"{language}_welcome"], null);
-			}
+				return (isVietnamese ? "Chào bạn! Mình là trợ lý bán hàng siêu vui vẻ đây! 😊 Bạn đang tìm gì nào?"
+									: "Hi! I'm your cheerful sales assistant! 😊 What are you looking for?", null);
+
+			// Kiểm tra câu hỏi về cửa hàng, thanh toán, hoặc bảo hành
+			if (IsShopQuery(message))
+				return (BuildShopInfoReply(isVietnamese, IsPaymentQuery(message), IsWarrantyQuery(message)), null);
 
 			if (minPrice.HasValue && maxPrice.HasValue)
-			{
-				products = await FindProducts(lowerMessage, budgetRange: (minPrice.Value, maxPrice.Value));
-			}
-			else if (budget.HasValue && IsCategoryQuery(lowerMessage))
-			{
-				products = await FindProducts(lowerMessage, budget: budget);
-			}
-			else if (budget.HasValue)
-			{
-				products = await FindProducts(lowerMessage, budget: budget);
-			}
-			else if (IsCategoryAndBrandQuery(lowerMessage))
-			{
-				products = await FindProducts(lowerMessage, byCategoryAndBrand: true);
-			}
-			else if (IsCategoryQuery(lowerMessage))
-			{
-				products = await FindProducts(lowerMessage, byCategory: true);
-			}
-			else if (IsBrandQuery(lowerMessage))
-			{
-				products = await FindProducts(lowerMessage, byBrand: true);
-			}
-			else if (IsProductRelatedQuery(lowerMessage))
-			{
-				var product = await FindProduct(lowerMessage);
-				var openAiReply = await CallOpenAI($"Thông tin sản phẩm: {originalMessage}", language);
-				reply = openAiReply;
+				return await HandlePriceRangeQuery(minPrice.Value, maxPrice.Value, isVietnamese);
+			if (budget.HasValue && IsCategoryQuery(message))
+				return await HandleCategoryBudgetQuery(message, budget.Value, isVietnamese);
+			if (budget.HasValue)
+				return await HandleBudgetQuery(budget.Value, isVietnamese);
+			if (IsCategoryAndBrandQuery(message))
+				return await HandleCategoryAndBrandQuery(message, isVietnamese);
+			if (IsCategoryQuery(message))
+				return await HandleCategoryQuery(message, isVietnamese);
+			if (IsBrandQuery(message))
+				return await HandleBrandQuery(message, isVietnamese);
+			if (IsProductRelatedQuery(message))
+				return await HandleProductQuery(message, isVietnamese);
 
-				if (product != null)
+			var reply = await GetNormalResponse(message, language);
+			return (isVietnamese ? $"Hi 😜 Đây là câu trả lời dành riêng cho bạn:\n{reply}\nBạn muốn khám phá thêm gì nữa không?"
+								 : $"Hi 😜 Here’s my answer just for you:\n{reply}\nWhat else can I help you explore?", null);
+		}
+
+		private bool IsShopQuery(string message) =>
+			new[] { "shop", "cửa hàng", "liên hệ", "địa chỉ", "contact", "address", "store", "giờ mở", "giờ đóng", "open hours", "close hours", "thanh toán", "trả góp", "payment", "installment", "bảo hành", "warranty" }
+				.Any(t => message.Contains(t));
+
+		private bool IsPaymentQuery(string message) =>
+			new[] { "thanh toán", "trả góp", "payment", "installment" }
+				.Any(t => message.Contains(t));
+
+		private bool IsWarrantyQuery(string message) =>
+			new[] { "bảo hành", "warranty" }
+				.Any(t => message.Contains(t));
+
+		private string BuildShopInfoReply(bool isVietnamese, bool isPaymentQuery, bool isWarrantyQuery)
+		{
+			var reply = new StringBuilder();
+			if (isVietnamese)
+			{
+				if (isWarrantyQuery)
 				{
-					productUrl = Url.Action("DetailsWithSlug", "Product", new { id = product.Id, slug = product.Slug }, Request.Scheme);
-					reply += $"\n{_responses[$"{language}_found"]}<img src='{GetImagePath(product)}' alt='{product.Name}' width='100' /> {product.Name} - ${product.Price}\n{_responses[$"{language}_product_link"]} [Mua ngay]({productUrl})";
+					reply.AppendLine("Chào bạn! Đây là thông tin bảo hành tại CuCu Shop! 😊");
+					reply.AppendLine($"- {_shopInfo.WarrantyInfo}");
+					reply.AppendLine($"Nếu bạn muốn biết thêm chi tiết, liên hệ qua email: {_shopInfo.Email} hoặc số điện thoại: {_shopInfo.Phone} nhé! 😄 Có gì mình hỗ trợ thêm không?");
+				}
+				else if (isPaymentQuery)
+				{
+					reply.AppendLine("Chào bạn! Đây là các phương thức thanh toán tại CuCu Shop! 😊");
+					foreach (var method in _shopInfo.PaymentMethods)
+						reply.AppendLine($"- {method}");
+					reply.AppendLine($"- Trả góp: {_shopInfo.InstallmentInfo}");
+					reply.AppendLine($"Nếu bạn muốn biết thêm chi tiết, liên hệ qua email: {_shopInfo.Email} hoặc số điện thoại: {_shopInfo.Phone} nhé! 😄 Có gì mình hỗ trợ thêm không?");
 				}
 				else
 				{
-					reply += $"\n{_responses[$"{language}_no_product"]}";
-					// Ghi log để debug
-					System.Diagnostics.Debug.WriteLine($"Không tìm thấy sản phẩm cho tin nhắn: {lowerMessage}");
+					reply.AppendLine("Chào bạn! Cảm ơn bạn đã quan tâm đến CuCu Shop! 😊");
+					reply.AppendLine($"{_shopInfo.Description}");
+					reply.AppendLine("- Tên: " + _shopInfo.Name);
+					reply.AppendLine("- Địa chỉ: " + _shopInfo.Address);
+					reply.AppendLine($"- Giờ mở cửa: {_shopInfo.OpenHours} - {_shopInfo.CloseHours} (tất cả các ngày trong tuần)");
+					reply.AppendLine("- Email liên hệ: " + _shopInfo.Email);
+					reply.AppendLine("- Số điện thoại: " + _shopInfo.Phone);
+					reply.AppendLine("Hãy ghé thăm hoặc liên hệ để trải nghiệm dịch vụ tuyệt vời của chúng mình nhé! Bạn cần hỗ trợ gì thêm không? 😄");
 				}
-
-				return (reply, productUrl);
 			}
 			else
 			{
-				reply = await CallOpenAI(originalMessage, language);
-				return (reply, null);
-			}
-
-			reply = products.Any()
-				? _responses[$"{language}_found"] + string.Join("\n", products.Select(p =>
+				if (isWarrantyQuery)
 				{
-					productUrl = Url.Action("DetailsWithSlug", "Product", new { id = p.Id, slug = p.Slug }, Request.Scheme);
-					return $"<img src='{GetImagePath(p)}' alt='{p.Name}' width='100' /> {p.Name} - ${p.Price} - [{_responses[$"{language}_product_link"]}]({productUrl})";
-				}))
-				: _responses[$"{language}_no_product"];
+					reply.AppendLine("Hello! Here’s the warranty info for CuCu Shop! 😊");
+					reply.AppendLine($"- {_shopInfo.WarrantyInfo}");
+					reply.AppendLine($"For more details, contact us via email: {_shopInfo.Email} or phone: {_shopInfo.Phone}. 😄 Anything else we can help with?");
+				}
+				else if (isPaymentQuery)
+				{
+					reply.AppendLine("Hello! Here are the payment methods at CuCu Shop! 😊");
+					foreach (var method in _shopInfo.PaymentMethods)
+						reply.AppendLine($"- {method}");
+					reply.AppendLine($"- Installments: {_shopInfo.InstallmentInfo}");
+					reply.AppendLine($"For more details, contact us via email: {_shopInfo.Email} or phone: {_shopInfo.Phone}. 😄 Anything else we can help with?");
+				}
+				else
+				{
+					reply.AppendLine("Hello! Thank you for your interest in CuCu Shop! 😊");
+					reply.AppendLine($"{_shopInfo.Description}");
+					reply.AppendLine("- Name: " + _shopInfo.Name);
+					reply.AppendLine("- Address: " + _shopInfo.Address);
+					reply.AppendLine($"- Opening Hours: {_shopInfo.OpenHours} - {_shopInfo.CloseHours} (every day)");
+					reply.AppendLine("- Contact Email: " + _shopInfo.Email);
+					reply.AppendLine("- Phone Number: " + _shopInfo.Phone);
+					reply.AppendLine("Come visit us or get in touch for an amazing shopping experience! Anything else we can help with? 😄");
+				}
+			}
+			return reply.ToString();
+		}
 
+		private async Task<(string text, string? productUrl)> HandlePriceRangeQuery(decimal minPrice, decimal maxPrice, bool isVietnamese)
+		{
+			var products = await _context.Products.Where(p => p.Price >= minPrice && p.Price <= maxPrice).Take(5).ToListAsync();
+			return products.Any()
+				? BuildProductReply(products, isVietnamese ? $"Sản phẩm trong khoảng giá từ {minPrice} đến {maxPrice} đô đây! 😍"
+														 : $"Products from {minPrice} to {maxPrice} USD! 😍", isVietnamese)
+				: (isVietnamese ? $"Chưa có sản phẩm trong khoảng giá từ {minPrice} đến {maxPrice} đô. Thử mức khác nhé? 😅"
+								: $"No products from {minPrice} to {maxPrice} USD. Try another range? 😅", null);
+		}
+
+		private async Task<(string text, string? productUrl)> HandleCategoryBudgetQuery(string message, decimal budget, bool isVietnamese)
+		{
+			var products = await FindProductsByCategoryAndBudget(message, budget);
+			return products.Any()
+				? BuildProductReply(products, isVietnamese ? $"Sản phẩm trong danh mục với ngân sách {budget} đô! 😄"
+														 : $"Products in category with {budget} USD budget! 😄", isVietnamese)
+				: (isVietnamese ? $"Chưa có sản phẩm trong danh mục này dưới {budget} đô. Thử lại nhé? 😔"
+								: $"No products in this category under {budget} USD. Try again? 😔", null);
+		}
+
+		private async Task<(string text, string? productUrl)> HandleBudgetQuery(decimal budget, bool isVietnamese)
+		{
+			var products = await _context.Products.Where(p => p.Price <= budget).Take(5).ToListAsync();
+			return products.Any()
+				? BuildProductReply(products, isVietnamese ? $"Sản phẩm dưới {budget} đô đây! 🤑"
+														 : $"Products under {budget} USD! 🤑", isVietnamese)
+				: (isVietnamese ? $"Chưa có sản phẩm dưới {budget} đô. Thử mức khác nhé? 😅"
+								: $"No products under {budget} USD. Try another budget? 😅", null);
+		}
+
+		private async Task<(string text, string? productUrl)> HandleCategoryAndBrandQuery(string message, bool isVietnamese)
+		{
+			var products = await FindProductsByCategoryAndBrand(message);
+			return products.Any()
+				? BuildProductReply(products, isVietnamese ? "Sản phẩm theo danh mục và thương hiệu! 😍"
+														 : "Products by category and brand! 😍", isVietnamese)
+				: (isVietnamese ? "Chưa tìm thấy sản phẩm theo danh mục và thương hiệu này. Thử lại nhé? 😔"
+								: "No products for this category and brand. Try again? 😔", null);
+		}
+
+		private async Task<(string text, string? productUrl)> HandleCategoryQuery(string message, bool isVietnamese)
+		{
+			var products = await FindProductsByCategory(message);
+			return products.Any()
+				? BuildProductReply(products, isVietnamese ? "Sản phẩm trong danh mục này! 😜"
+														 : "Products in this category! 😜", isVietnamese)
+				: (isVietnamese ? "Chưa có sản phẩm trong danh mục này. Thử lại nhé? 😅"
+								: "No products in this category. Try again? 😅", null);
+		}
+
+		private async Task<(string text, string? productUrl)> HandleBrandQuery(string message, bool isVietnamese)
+		{
+			var products = await FindProductsByBrand(message);
+			return products.Any()
+				? BuildProductReply(products, isVietnamese ? "Sản phẩm của thương hiệu này! 😎"
+														 : "Products from this brand! 😎", isVietnamese)
+				: (isVietnamese ? "Chưa có sản phẩm của thương hiệu này. Thử lại nhé? 😔"
+								: "No products for this brand. Try again? 😔", null);
+		}
+
+		private async Task<(string text, string? productUrl)> HandleProductQuery(string message, bool isVietnamese)
+		{
+			var generalInfo = await GetGeneralProductInfo(message, isVietnamese ? "vi" : "en");
+			var product = await FindProductByMessage(message);
+			var reply = isVietnamese ? $"Thông tin chi tiết đây:\n{generalInfo}" : $"Here’s the full scoop:\n{generalInfo}";
+
+			if (product == null)
+				return (reply + (isVietnamese ? "\n\nHơi tiếc, món này chưa có trong shop. 😅" : "\n\nBummer, this item isn’t in our store. 😅"), null);
+
+			var productUrl = Url.Action("DetailsWithSlug", "Product", new { id = product.Id, slug = product.Slug }, Request.Scheme);
+			var imagePath = GetImagePath(product);
+			reply += isVietnamese
+				? $"\n\nWow, {product.Name} đây! 😍 <img src='{imagePath}' alt='{product.Name}' width='100'/> {product.Name} - ${product.Price} - [Xem ngay!]({productUrl})"
+				: $"\n\nGuess what? {product.Name} is here! 😍 <img src='{imagePath}' alt='{product.Name}' width='100'/> {product.Name} - ${product.Price} - [Check it out!]({productUrl})";
 			return (reply, productUrl);
 		}
 
-		private async Task<List<ProductModel>> FindProducts(string message, bool byCategory = false, bool byBrand = false, bool byCategoryAndBrand = false, decimal? budget = null, (decimal min, decimal max)? budgetRange = null)
+		private (string text, string? productUrl) BuildProductReply(List<ProductModel> products, string intro, bool isVietnamese)
 		{
-			var query = _context.Products
-				.Include(p => p.Category)
-				.Include(p => p.Brand)
-				.AsQueryable();
-
-			if (byCategory || byCategoryAndBrand)
+			var reply = new StringBuilder(intro + "\n");
+			string? productUrl = null;
+			foreach (var product in products)
 			{
-				var category = await _context.Categories.FirstOrDefaultAsync(c => message.Contains(c.Name.ToLower()));
-				if (category != null) query = query.Where(p => p.CategoryId == category.Id);
+				productUrl = Url.Action("DetailsWithSlug", "Product", new { id = product.Id, slug = product.Slug }, Request.Scheme);
+				var imagePath = GetImagePath(product);
+				reply.AppendLine($"<img src='{imagePath}' alt='{product.Name}' width='100'/> {product.Name} - ${product.Price} - [{(isVietnamese ? "Xem ngay" : "Check it out")}]({productUrl})");
 			}
-
-			if (byBrand || byCategoryAndBrand)
-			{
-				var brand = await _context.BrandModels.FirstOrDefaultAsync(b => message.Contains(b.Name.ToLower()));
-				if (brand != null) query = query.Where(p => p.BrandId == brand.Id);
-			}
-
-			if (budget.HasValue)
-			{
-				query = query.Where(p => p.Price <= budget.Value);
-			}
-
-			if (budgetRange.HasValue)
-			{
-				query = query.Where(p => p.Price >= budgetRange.Value.min && p.Price <= budgetRange.Value.max);
-			}
-
-			return await query.Take(5).ToListAsync();
+			reply.AppendLine(isVietnamese ? "\nChốt đơn ngay nhé! 😉" : "\nGrab them now! 😉");
+			return (reply.ToString(), productUrl);
 		}
 
-		private async Task<ProductModel> FindProduct(string message)
-		{
-			var query = _context.Products
-				.Include(p => p.Category)
-				.Include(p => p.Brand)
-				.AsQueryable();
+		private decimal? ExtractBudgetFromMessage(string message) =>
+			Regex.Match(message, @"(?:tôi có |với |I have )?(\d+(?:\.\d+)?)\s*(đô|dollars|usd|\$)", RegexOptions.IgnoreCase) is { Success: true } match
+			&& decimal.TryParse(match.Groups[1].Value, out var budget) ? budget : null;
 
-			// Chuẩn hóa tin nhắn
-			var normalizedMessage = message.ToLower().Trim();
-			// Loại bỏ các từ không liên quan
-			var stopWords = new[] { "thông", "tin", "chi", "tiết", "về", "information", "details", "about" };
-			foreach (var stopWord in stopWords)
-			{
-				normalizedMessage = normalizedMessage.Replace(stopWord, " ");
-			}
-			normalizedMessage = Regex.Replace(normalizedMessage, @"\s+", " ").Trim();
-
-			// Tìm danh mục (tùy chọn, không bắt buộc)
-			var category = await _context.Categories.FirstOrDefaultAsync(c => normalizedMessage.Contains(c.Name.ToLower()));
-			if (category != null)
-			{
-				query = query.Where(p => p.CategoryId == category.Id);
-			}
-
-			// Tách từ khóa
-			var words = normalizedMessage.Split(' ', StringSplitOptions.RemoveEmptyEntries)
-				.Where(w => w.Length > 2)
-				.ToList();
-
-			// Xử lý từ đồng nghĩa
-			var synonyms = new Dictionary<string, string[]>
-			{
-				{ "gram", new[] { "lg gram", "gram 17", "gram 16" } },
-				{ "iphone", new[] { "apple iphone", "iphone 13", "iphone 14" } }
-			};
-
-			var expandedWords = new List<string>(words);
-			foreach (var word in words)
-			{
-				if (synonyms.ContainsKey(word))
-				{
-					expandedWords.AddRange(synonyms[word]);
-				}
-			}
-
-			// Tìm sản phẩm khớp với ít nhất một từ khóa
-			if (expandedWords.Any())
-			{
-				query = query.Where(p => expandedWords.Any(w =>
-					p.Name.ToLower().Contains(w) ||
-					(p.Description != null && p.Description.ToLower().Contains(w))));
-			}
-
-			// Debug: Ghi log truy vấn
-			System.Diagnostics.Debug.WriteLine($"Từ khóa tìm kiếm: {string.Join(", ", expandedWords)}");
-
-			// Trả về sản phẩm phù hợp nhất
-			return await query.OrderByDescending(p => p.Price).FirstOrDefaultAsync();
-		}
-
-		private async Task<string> CallOpenAI(string prompt, string language)
-		{
-			try
-			{
-				var request = new
-				{
-					model = "gpt-3.5-turbo",
-					messages = new[] { new { role = "user", content = language == "vi" ? prompt : $"Respond in English: {prompt}" } },
-					max_tokens = 500
-				};
-
-				var response = await _client.PostAsync("https://api.openai.com/v1/chat/completions",
-					new StringContent(JsonConvert.SerializeObject(request), System.Text.Encoding.UTF8, "application/json"));
-				response.EnsureSuccessStatusCode();
-
-				var data = JsonConvert.DeserializeObject<dynamic>(await response.Content.ReadAsStringAsync());
-				return data.choices[0].message.content.ToString();
-			}
-			catch (Exception ex)
-			{
-				System.Diagnostics.Debug.WriteLine($"Lỗi OpenAI: {ex.Message}");
-				return _responses[$"{language}_no_product"];
-			}
-		}
-
-		private decimal? ExtractBudget(string message)
-		{
-			var match = Regex.Match(message, @"(?:tôi có |với |I have )?(\d+(?:\.\d+)?)\s*(đô|dollars|usd|\$)", RegexOptions.IgnoreCase);
-			return match.Success && decimal.TryParse(match.Groups[1].Value, out var budget) ? budget : null;
-		}
-
-		private (decimal? minPrice, decimal? maxPrice) ExtractPriceRange(string message)
+		private (decimal? minPrice, decimal? maxPrice) ExtractPriceRangeFromMessage(string message)
 		{
 			var match = Regex.Match(message, @"(?:từ |from )?(\d+(?:\.\d+)?)\s*(?:đến |to )\s*(\d+(?:\.\d+)?)\s*(đô|dollars|usd|\$)", RegexOptions.IgnoreCase);
 			return match.Success && decimal.TryParse(match.Groups[1].Value, out var min) && decimal.TryParse(match.Groups[2].Value, out var max) ? (min, max) : (null, null);
 		}
 
-		private bool IsCategoryQuery(string message) => _context.Categories.Any(c => message.Contains(c.Name.ToLower()));
-		private bool IsBrandQuery(string message) => _context.BrandModels.Any(b => message.Contains(b.Name.ToLower()));
-		private bool IsCategoryAndBrandQuery(string message) => IsCategoryQuery(message) && IsBrandQuery(message);
-		private bool IsProductRelatedQuery(string message) => new[] { "thông tin", "sản phẩm", "giá", "xem", "information", "product", "price", "details" }.Any(message.Contains);
+		private async Task<string> DetectLanguage(string message) =>
+			message.Any(c => c >= 'À' && c <= 'ỹ') ? "vi" : "en";
+
+		private async Task<string> GetGeneralProductInfo(string message, string language)
+		{
+			using var client = new HttpClient { DefaultRequestHeaders = { { "Authorization", $"Bearer {ApiKey}" } } };
+			var prompt = language == "vi"
+				? $"Thông tin tổng quan về sản phẩm trong: '{message}'. Bao gồm năm ra mắt, cấu hình chính, đặc điểm nổi bật, trả lời bằng tiếng Việt."
+				: $"Overview of the product in: '{message}'. Include release year, main specs, key features, respond in English.";
+			var requestBody = new { model = "gpt-3.5-turbo", messages = new[] { new { role = "user", content = prompt } }, max_tokens = 500 };
+			var response = await client.PostAsync(ApiUrl, new StringContent(JsonConvert.SerializeObject(requestBody), Encoding.UTF8, "application/json"));
+			if (response.IsSuccessStatusCode)
+			{
+				var result = JsonConvert.DeserializeObject<dynamic>(await response.Content.ReadAsStringAsync());
+				return result.choices[0].message.content;
+			}
+			return language == "vi" ? "Ôi, chưa lấy được thông tin! 😅 Thử lại nha!" : "Oops, couldn’t get the info! 😅 Try again!";
+		}
+
+		private async Task<string> GetNormalResponse(string message, string language)
+		{
+			var products = await _context.Products.ToListAsync();
+			var productSuggestion = products.FirstOrDefault(p => message.ToLower().Contains(p.Name.ToLower())) is { } product
+				? BuildProductReply(new() { product }, language == "vi" ? $"Bạn nhắc đến {product.Name} nè!" : $"You mentioned {product.Name}!", language == "vi").text
+				: "";
+
+			using var client = new HttpClient { DefaultRequestHeaders = { { "Authorization", $"Bearer {ApiKey}" } } };
+			var prompt = language == "vi" ? message : $"Respond in English: {message}";
+			var requestBody = new { model = "gpt-3.5-turbo", messages = new[] { new { role = "user", content = prompt } }, max_tokens = 500 };
+			var response = await client.PostAsync(ApiUrl, new StringContent(JsonConvert.SerializeObject(requestBody), Encoding.UTF8, "application/json"));
+			if (response.IsSuccessStatusCode)
+			{
+				var result = JsonConvert.DeserializeObject<dynamic>(await response.Content.ReadAsStringAsync());
+				return result.choices[0].message.content + productSuggestion;
+			}
+			return (language == "vi" ? "Ôi, lỗi nhỏ rồi! 😅 Thử lại nha!" : "Tiny error! 😅 Try again!") + productSuggestion;
+		}
+
+		private bool IsProductRelatedQuery(string message) =>
+			new[] { "thông tin", "sản phẩm", "giá", "cấu hình", "ra mắt", "chi tiết", "information", "product", "price", "specs", "release", "details" }
+				.Any(t => message.Contains(t)) && _context.Products.Any(p => message.Contains(p.Name.ToLower()));
+
+		private async Task<ProductModel?> FindProductByMessage(string message)
+		{
+			var products = await _context.Products.Include(p => p.Brand).Include(p => p.Category).ToListAsync();
+			var keywords = message.ToLower().Split(new[] { ' ', ',', '.', '!' }, StringSplitOptions.RemoveEmptyEntries);
+			return products.MaxBy(p =>
+			{
+				var name = p.Name.ToLower();
+				var desc = p.Description.ToLower();
+				return name == message || desc.Contains(message) ? int.MaxValue : keywords.Count(k => name.Contains(k) || desc.Contains(k));
+			});
+		}
+
+		private bool IsCategoryQuery(string message) =>
+			_context.Categories.Any(c => message.Contains(c.Name.ToLower()) || (message.Contains("laptop") && c.Name.ToLower() == "máy tính xách tay"));
+
+		private async Task<List<ProductModel>> FindProductsByCategory(string message)
+		{
+			var category = await _context.Categories.FirstOrDefaultAsync(c => message.Contains(c.Name.ToLower()) || (message.Contains("laptop") && c.Name.ToLower() == "máy tính xách tay"));
+			return category != null ? await _context.Products.Where(p => p.CategoryId == category.Id).ToListAsync() : new();
+		}
+
+		private bool IsBrandQuery(string message) =>
+			_context.BrandModels.Any(b => message.Contains(b.Name.ToLower()));
+
+		private async Task<List<ProductModel>> FindProductsByBrand(string message)
+		{
+			var brand = await _context.BrandModels.FirstOrDefaultAsync(b => message.Contains(b.Name.ToLower()));
+			return brand != null ? await _context.Products.Where(p => p.BrandId == brand.Id).ToListAsync() : new();
+		}
+
+		private bool IsCategoryAndBrandQuery(string message) =>
+			IsCategoryQuery(message) && IsBrandQuery(message);
+
+		private async Task<List<ProductModel>> FindProductsByCategoryAndBrand(string message)
+		{
+			var category = await _context.Categories.FirstOrDefaultAsync(c => message.Contains(c.Name.ToLower()));
+			var brand = await _context.BrandModels.FirstOrDefaultAsync(b => message.Contains(b.Name.ToLower()));
+			return (category, brand) != (null, null)
+				? await _context.Products.Where(p => p.CategoryId == category.Id && p.BrandId == brand.Id).ToListAsync()
+				: new();
+		}
+
+		private async Task<List<ProductModel>> FindProductsByCategoryAndBudget(string message, decimal budget)
+		{
+			var category = await _context.Categories.FirstOrDefaultAsync(c => message.Contains(c.Name.ToLower()));
+			return category != null
+				? await _context.Products.Where(p => p.CategoryId == category.Id && p.Price <= budget).Take(5).ToListAsync()
+				: new();
+		}
 
 		private string GetImagePath(ProductModel product)
 		{
-			var defaultImage = "/media/products/noimage.jpg";
-			if (string.IsNullOrEmpty(product.Image) || product.Image == "noimage.jpg") return defaultImage;
-			var path = Path.Combine(_env.WebRootPath, "media/products", product.Image);
-			return System.IO.File.Exists(path) ? $"/media/products/{product.Image}" : defaultImage;
+			const string defaultImage = "/media/products/noimage.jpg";
+			if (string.IsNullOrEmpty(product.Image) || product.Image == "noimage.jpg")
+				return defaultImage;
+			var imagePath = Path.Combine(_env.WebRootPath, "media/products", product.Image);
+			return System.IO.File.Exists(imagePath) ? $"/media/products/{product.Image}" : defaultImage;
 		}
 	}
 }
